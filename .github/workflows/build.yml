@@ -26,7 +26,6 @@ jobs:
 
       - name: 检查依赖
         run: |
-          sudo apt-get update
           sudo apt-get install repo
           repo --version
           git-lfs -v
@@ -37,4 +36,8 @@ jobs:
 
       - name: 添加本地清单
         run: |
-          git clone https://github.com/remote-android/local_manifests.git ~/redroid/.repo/local_manifests -b ${{ LOCAL_MANIFESTS_BRANCH }}
+          git clone https://github.com/remote-android/local_manifests.git ~/redroid/.repo/local_manifests -b ${{ LOCAL_MANIFEST_BRANCH }}
+
+      - name: 同步代码
+        run: |
+          repo sync -c
