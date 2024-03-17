@@ -22,6 +22,12 @@ jobs:
       - name: 检出代码
         uses: actions/checkout@v4
 
+      - name: 设置 repo 工具
+        run: |
+          sudo apt-get install curl
+          curl https://storage.googleapis.com/git-repo-downloads/repo > ~/bin/repo
+          chmod a+x ~/bin/repo
+
       - name: 检查依赖
         run: |
           git-lfs -v
