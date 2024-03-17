@@ -26,6 +26,5 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install repo
-          sudo repo init
           repo --version
           git-lfs -v
