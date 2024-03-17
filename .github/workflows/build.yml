@@ -8,6 +8,7 @@ on:
 env:
   REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }}
+  ANDROID_BRANCH: android-11.0.0_r48
 
 jobs:
   build:
@@ -28,3 +29,7 @@ jobs:
           sudo apt-get install repo
           repo --version
           git-lfs -v
+
+      - name: 初始化 Android 项目
+        run: |
+          repo init -u https://android.googlesource.com/platform/manifest --git-lfs --depth=1 -b ${{ android-11.0.0_r48 }}
