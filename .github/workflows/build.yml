@@ -1,0 +1,27 @@
+name: Docker
+
+on:
+  workflow_dispatch: {}
+  push:
+    tags: [ '*' ]
+
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: ${{ github.repository }}
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+      id-token: write
+
+    steps:
+      - name: 检出代码
+        uses: actions/checkout@v4
+
+      - name: 检查 Git LFS
+        run: |
+          git-lfs -v
