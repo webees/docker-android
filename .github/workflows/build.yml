@@ -24,15 +24,16 @@ jobs:
       - name: 检出代码
         uses: actions/checkout@v4
 
-      - name: 检查依赖
-        run: |
-          sudo apt-get install repo
-          repo --version
-          git-lfs -v
-
       - name: 项目目录
         run: |
           mkdir ~/redroid && cd ~/redroid
+
+      - name: 检查依赖
+        run: |
+          sudo apt-get install repo
+          sudo repo init
+          repo --version
+          git-lfs -v
 
       - name: 初始化 Android 项目
         run: |
