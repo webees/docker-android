@@ -31,13 +31,12 @@ jobs:
       - name: 检查依赖
         run: |
           sudo apt-get install repo
-          sudo repo init -u https://android.googlesource.com/platform/manifest
-          sudo cp $GITHUB_WORKSPACE/.repo/repo/repo /usr/bin/repo
+          repo -v
           git-lfs -v
 
       - name: 初始化 Android 项目 
         run: |
-          repo init -u https://android.googlesource.com/platform/manifest --git-lfs --depth=1 -b ${{ env.ANDROID_MANIFEST_BRANCH }}
+          repo init -u https://android.googlesource.com/platform/manifest --depth=1 -b ${{ env.ANDROID_MANIFEST_BRANCH }}
 
       - name: 添加本地清单
         run: |
