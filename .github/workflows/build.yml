@@ -24,6 +24,7 @@ jobs:
 
       - name: 检查依赖
         run: |
+          sudo apt-get update
           sudo apt-get install repo
           sudo repo init
           repo --version
