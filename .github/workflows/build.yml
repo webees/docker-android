@@ -32,6 +32,7 @@ jobs:
         run: |
           sudo apt-get install repo
           sudo repo init
+          sudo cp $GITHUB_WORKSPACE/.repo/repo/repo /usr/bin/repo
           repo --version
           git-lfs -v
 
