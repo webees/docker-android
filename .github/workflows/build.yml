@@ -8,7 +8,7 @@ on:
 env:
   REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }}
-  ANDROID_MANIFEST_BRANCH: android-11.0.0_r48
+  ANDROID_MANIFEST_BRANCH: android-11.0.0_r48 # check supported branch in https://github.com/remote-android/redroid-patches.git
   LOCAL_MANIFEST_BRANCH: 11.0.0
 
 jobs:
@@ -31,14 +31,14 @@ jobs:
       - name: 检查依赖
         run: |
           sudo apt-get install repo
-          sudo repo init --no-repo-verify
+          sudo repo init -u https://android.googlesource.com/platform/manifest
           sudo cp $GITHUB_WORKSPACE/.repo/repo/repo /usr/bin/repo
           repo --version
           git-lfs -v
 
-      - name: 初始化 Android 项目 # check supported branch in https://github.com/remote-android/redroid-patches.git
+      - name: 初始化 Android 项目 
         run: |
-          repo init -u https://android.googlesource.com/platform/manifest --depth=1 -b ${{ env.ANDROID_MANIFEST_BRANCH }}
+          repo init -u https://android.googlesource.com/platform/manifest --git-lfs --depth=1 -b ${{ env.ANDROID_MANIFEST_BRANCH }}
 
       - name: 添加本地清单
         run: |
