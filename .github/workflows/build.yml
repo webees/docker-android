@@ -30,6 +30,10 @@ jobs:
           repo --version
           git-lfs -v
 
+      - name: 项目目录
+        run: |
+          mkdir ~/redroid && cd ~/redroid
+
       - name: 初始化 Android 项目
         run: |
           repo init -u https://android.googlesource.com/platform/manifest --git-lfs --depth=1 -b $ANDROID_MANIFEST_BRANCH
@@ -41,3 +45,8 @@ jobs:
       - name: 同步代码
         run: |
           repo sync -c
+
+      - name: 应用补丁
+        run: |
+          git clone https://github.com/remote-android/redroid-patches.git ~/redroid-patches
+          ~/redroid-patches/apply-patch.sh ~/redroid
