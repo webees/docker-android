@@ -36,11 +36,11 @@ jobs:
 
       - name: 初始化 Android 项目
         run: |
-          repo init -u https://android.googlesource.com/platform/manifest --git-lfs --depth=1 -b $ANDROID_MANIFEST_BRANCH
+          repo init -u https://android.googlesource.com/platform/manifest --git-lfs --depth=1 -b ${{ env.ANDROID_MANIFEST_BRANCH }}
 
       - name: 添加本地清单
         run: |
-          git clone https://github.com/remote-android/local_manifests.git ~/redroid/.repo/local_manifests -b $LOCAL_MANIFEST_BRANCH
+          git clone https://github.com/remote-android/local_manifests.git ~/redroid/.repo/local_manifests -b ${{ env.LOCAL_MANIFEST_BRANCH }}
 
       - name: 同步代码
         run: |
