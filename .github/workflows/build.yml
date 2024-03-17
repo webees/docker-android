@@ -30,8 +30,7 @@ jobs:
 
       - name: 检查依赖
         run: |
-          curl https://storage.googleapis.com/git-repo-downloads/repo > ~/bin/repo
-          chmod a+x ~/bin/repo
+          sudo apt-get install repo
           repo --version
           git-lfs -v
 
