@@ -30,9 +30,8 @@ jobs:
 
       - name: 检查依赖
         run: |
-          sudo apt-get install repo
-          sudo repo init
-          sudo cp $GITHUB_WORKSPACE/.repo/repo/repo /usr/bin/repo
+          curl https://storage.googleapis.com/git-repo-downloads/repo > ~/bin/repo
+          chmod a+x ~/bin/repo
           repo --version
           git-lfs -v
 
