@@ -34,9 +34,9 @@ jobs:
           repo --version
           git-lfs -v
 
-      - name: 初始化 Android 项目
+      - name: 初始化 Android 项目 # check supported branch in https://github.com/remote-android/redroid-patches.git
         run: |
-          repo init -u https://android.googlesource.com/platform/manifest --git-lfs --depth=1 -b ${{ env.ANDROID_MANIFEST_BRANCH }}
+          repo init -u https://android.googlesource.com/platform/manifest --depth=1 -b ${{ env.ANDROID_MANIFEST_BRANCH }}
 
       - name: 添加本地清单
         run: |
