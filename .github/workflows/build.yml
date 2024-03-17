@@ -31,6 +31,7 @@ jobs:
       - name: 检查依赖
         run: |
           sudo apt-get install repo
+          sudo cp $GITHUB_WORKSPACE/.repo/repo/repo /usr/bin/repo
           repo --version
           git-lfs -v
 
