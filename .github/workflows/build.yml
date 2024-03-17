@@ -33,7 +33,6 @@ jobs:
           sudo apt-get install repo
           sudo repo init -u https://android.googlesource.com/platform/manifest
           sudo cp $GITHUB_WORKSPACE/.repo/repo/repo /usr/bin/repo
-          repo --version
           git-lfs -v
 
       - name: 初始化 Android 项目 
